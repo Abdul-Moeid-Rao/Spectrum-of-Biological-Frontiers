@@ -2,7 +2,7 @@ import Stripe from 'stripe';
 import logger from '../utils/logger.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
-  apiVersion: '2025-02-24-preview',
+  apiVersion: '2026-02-25.clover',
 });
 
 export const createPaymentIntent = async (amount: number, currency: string = 'usd', articleId: string) => {

@@ -11,6 +11,7 @@ import reviewRoutes from './routes/review.route.js';
 import archiveRoutes from './routes/archive.route.js';
 import paymentRoutes from './routes/payment.route.js';
 import userRoutes from './routes/user.route.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 const app = express();
 

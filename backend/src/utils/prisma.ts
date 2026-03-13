@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
 import logger from './logger.js';
 
 const prisma = new PrismaClient({
@@ -10,7 +10,7 @@ const prisma = new PrismaClient({
   ],
 });
 
-prisma.$on('query', (e) => {
+prisma.$on('query', (e: Prisma.QueryEvent) => {
   logger.debug(`Query: ${e.query} - Params: ${e.params} - Duration: ${e.duration}ms`);
 });
 

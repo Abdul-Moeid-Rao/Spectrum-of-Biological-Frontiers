@@ -7,7 +7,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -111,8 +110,40 @@ model Payment {
   createdAt     DateTime      @default(now())
 }
 
-enum UserType { AUTHOR REVIEWER EDITOR ADMIN }
-enum ArticleStatus { DRAFT SUBMITTED UNDER_REVIEW REVISION_REQUESTED ACCEPTED PUBLISHED REJECTED }
-enum ReviewRecommendation { ACCEPT MINOR_REVISIONS MAJOR_REVISIONS REJECT }
-enum ReviewStatus { PENDING ACCEPTED DECLINED COMPLETED }
-enum PaymentStatus { PENDING COMPLETED FAILED REFUNDED }
+enum UserType {
+  AUTHOR
+  REVIEWER
+  EDITOR
+  ADMIN
+}
+
+enum ArticleStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  REVISION_REQUESTED
+  ACCEPTED
+  PUBLISHED
+  REJECTED
+}
+
+enum ReviewRecommendation {
+  ACCEPT
+  MINOR_REVISIONS
+  MAJOR_REVISIONS
+  REJECT
+}
+
+enum ReviewStatus {
+  PENDING
+  ACCEPTED
+  DECLINED
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
