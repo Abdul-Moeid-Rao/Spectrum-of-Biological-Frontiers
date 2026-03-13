@@ -1,0 +1,45 @@
+# Tasks
+
+- [x] Project Initialization
+    - [x] Create project structure
+    - [x] Install dependencies
+    - [x] Configure Tailwind CSS
+    - [x] Setup Google Fonts (Playfair Display, Source Serif 4, JetBrains Mono)
+- [x] Core Architecture
+    - [x] Setup Redux Toolkit (auth, articles, submissions, ui slices)
+    - [x] Setup API layer (Axios instance, service modules)
+    - [x] Setup React Router structure
+    - [x] Create ProtectedRoute component
+- [x] Common Components
+    - [x] Header & Footer
+    - [x] StatusBadge
+    - [x] ArticleCard & IssueCard
+    - [x] SearchBar
+- [x] Public Pages
+    - [x] Homepage (Hero, Featured, Latest, Stats, News)
+    - [x] About Us, Aims & Scope, Journal Overview
+    - [x] Editorial Board
+    - [x] Indexing & Abstracting
+    - [x] Author Guidelines & APC
+    - [x] Contact Us
+    - [x] Ethics & Policies
+- [x] Authentication
+    - [x] Login Page
+    - [x] Register Page (Multi-step)
+- [x] User Dashboard
+    - [x] Dashboard Overview
+    - [x] My Submissions
+    - [x] My Reviews
+    - [x] Profile Settings
+- [x] Submission Flow
+    - [x] Multi-step Manuscript Submission Form
+    - [x] File Upload component
+    - [x] Author Row component
+- [x] Archives & Issues
+    - [x] Archives Browser
+    - [x] Issue Article List
+- [x] Final Polish
+    - [x] Framer Motion animations
+    - [x] SEO (React Helmet)
+    - [x] Error Boundaries & Toast notifications
+    - [x] Responsive design check

@@ -1,0 +1,118 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String    @id @default(cuid())
+  email           String    @unique
+  passwordHash    String
+  firstName       String
+  lastName        String
+  institution     String?
+  department      String?
+  country         String?
+  orcidId         String?   @unique
+  userType        UserType  @default(AUTHOR)
+  isEmailVerified Boolean   @default(false)
+  emailVerifyToken String?
+  resetToken      String?
+  resetTokenExpiry DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  submissions     Article[] @relation("CorrespondingAuthor")
+  reviews         Review[]
+  editorialRole   EditorialBoard?
+}
+
+model Article {
+  id                   String    @id @default(cuid())
+  title                String
+  abstract             String
+  keywords             String[]
+  manuscriptUrl        String?
+  coverLetterUrl       String?
+  supplementaryUrls    String[]
+  status               ArticleStatus @default(DRAFT)
+  submissionDate       DateTime?
+  publicationDate      DateTime?
+  volume               Int?
+  issue                Int?
+  pageStart            Int?
+  pageEnd              Int?
+  doi                  String?   @unique
+  category             String?
+  viewCount            Int       @default(0)
+  downloadCount        Int       @default(0)
+  correspondingAuthorId String
+  correspondingAuthor  User      @relation("CorrespondingAuthor", fields: [correspondingAuthorId], references: [id])
+  coAuthors            ArticleAuthor[]
+  reviews              Review[]
+  payment              Payment?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+}
+
+model ArticleAuthor {
+  id          String  @id @default(cuid())
+  articleId   String
+  article     Article @relation(fields: [articleId], references: [id])
+  firstName   String
+  lastName    String
+  email       String
+  institution String?
+  orcidId     String?
+  order       Int
+}
+
+model Review {
+  id                  String           @id @default(cuid())
+  articleId           String
+  article             Article          @relation(fields: [articleId], references: [id])
+  reviewerId          String
+  reviewer            User             @relation(fields: [reviewerId], references: [id])
+  recommendation      ReviewRecommendation?
+  comments            String?
+  confidentialComments String?
+  dueDate             DateTime?
+  completedDate       DateTime?
+  status              ReviewStatus     @default(PENDING)
+  createdAt           DateTime         @default(now())
+}
+
+model EditorialBoard {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  user        User     @relation(fields: [userId], references: [id])
+  position    String
+  department  String?
+  institution String?
+  country     String?
+  isActive    Boolean  @default(true)
+  startDate   DateTime
+  endDate     DateTime?
+}
+
+model Payment {
+  id            String        @id @default(cuid())
+  articleId     String        @unique
+  article       Article       @relation(fields: [articleId], references: [id])
+  amount        Int
+  currency      String        @default("usd")
+  stripePaymentIntentId String?
+  status        PaymentStatus @default(PENDING)
+  createdAt     DateTime      @default(now())
+}
+
+enum UserType { AUTHOR REVIEWER EDITOR ADMIN }
+enum ArticleStatus { DRAFT SUBMITTED UNDER_REVIEW REVISION_REQUESTED ACCEPTED PUBLISHED REJECTED }
+enum ReviewRecommendation { ACCEPT MINOR_REVISIONS MAJOR_REVISIONS REJECT }
+enum ReviewStatus { PENDING ACCEPTED DECLINED COMPLETED }
+enum PaymentStatus { PENDING COMPLETED FAILED REFUNDED }
