@@ -5,7 +5,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-    User, Mail, Lock, Building, Globe, Microscope,
     ExternalLink, ArrowRight, ArrowLeft, CheckCircle2,
     Loader2, BadgeCheck
 } from 'lucide-react';
@@ -31,7 +30,7 @@ const Register: React.FC = () => {
 
     const navigate = useNavigate();
 
-    const { register, handleSubmit, trigger, formState: { errors } } = useForm<RegisterFormValues>({
+    const { register, handleSubmit, trigger } = useForm<RegisterFormValues>({
         resolver: zodResolver(registerSchema),
     });
 

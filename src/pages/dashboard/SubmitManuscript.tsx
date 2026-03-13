@@ -244,7 +244,7 @@ const SubmitManuscript: React.FC = () => {
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {['Manuscript (PDF/Docx)', 'Cover Letter (Optional)'].map((label, idx) => (
+                                {['Manuscript (PDF/Docx)', 'Cover Letter (Optional)'].map((label) => (
                                     <div key={label} className="border-2 border-dashed border-white/10 rounded-3xl p-10 text-center space-y-4 hover:border-brand-teal/40 transition-all group cursor-pointer bg-white/[0.02]">
                                         <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto text-white/20 group-hover:text-brand-teal transition-colors">
                                             <Upload size={32} />

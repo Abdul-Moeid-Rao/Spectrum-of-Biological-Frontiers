@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    ClipboardCheck, Clock, CheckCircle,
+    Clock,
     ChevronRight, AlertCircle, FileText,
     User, MessageSquare
 } from 'lucide-react';
-import StatusBadge from '../../components/common/StatusBadge';
 
 const MyReviews: React.FC = () => {
     const reviewAssignments = [

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
     Search, Filter, Download, Edit3,
-    Trash2, Eye, MoreVertical, Plus,
+    Eye, MoreVertical, Plus,
     FileText, Calendar
 } from 'lucide-react';
 import { Link } from 'react-router-dom';

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import {
     User, Mail, Building, Globe,
-    Lock, Bell, Camera, Shield,
+    Bell, Camera, Shield,
     Save, ExternalLink, Fingerprint
 } from 'lucide-react';
 import type { RootState } from '../../store';
